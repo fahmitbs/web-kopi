@@ -17,11 +17,30 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::middleware(['auth','isAdmin'])->group(function () {
-    //Route::get('/dashboard', 'Admin\PageController@index')->name('dashboard');
-//});
+// Admin
+Route::group(['middleware' => ['auth','isAdmin']], function () {
+    Route::get('/dashboard', function () {
+        return view('admin.page.dashboard');
+    });
 
-Route::get('/dashboard', 'Admin\PageController@index')->name('dashboard');
+    Route::get('registered-user','Admin\RegisteredController@index');
+
+    Route::get('/admin_profile', 'ProfileController@index_admin');
+    Route::post('/admin_profile', 'ProfileController@update_admin');
+
+    //Produk
+    Route::get('products','Admin\BarangController@index');
+    Route::get('add-products','Admin\BarangController@create');
+
+    //Riwayat
+    Route::get('admin_history', 'HistoryController@index_admin');
+
+});
+
+// Admin
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('pesan/{id}', 'PesanController@index');
 Route::post('pesan/{id}', 'PesanController@pesan');

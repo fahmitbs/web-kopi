@@ -23,6 +23,14 @@ class HistoryController extends Controller
     	return view('history.index', compact('pesanans'));
     }
 
+    public function index_admin()
+    {
+    	$pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=',0)->get();
+
+    	return view('admin.history.index', compact('pesanans'));
+    }
+
+
     public function detail($id)
     {
     	$pesanan = Pesanan::where('id', $id)->first();

@@ -33,4 +33,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('backend/dist/js/demo.js') }}"></script>
 
+<script src="{{ asset('js/app.js') }}" defer></script>
+
 @yield('scripts')

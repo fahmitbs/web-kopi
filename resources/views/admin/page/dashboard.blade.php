@@ -12,7 +12,7 @@ Admin | Dashboard Mitra Kopi
     <!-- Content Wrapper, contains page content -->
     <div class="content-wrapper">
         <div class="container">
-            ini tes konten
+            <h2> Selamat Datang , {{ Auth::user()->name }} </h2>
         </div>
     </div>
 @endsection

@@ -43,6 +43,18 @@ class LoginController extends Controller
         //}
     //}
 
+    public function redirectTo()
+    {
+        if(Auth::user()->role_as == 'admin')
+        {
+            return 'dashboard';
+        }
+        else
+        {
+            return 'home';
+        }
+    }
+
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
